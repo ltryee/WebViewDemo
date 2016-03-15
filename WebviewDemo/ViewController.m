@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "MttViewSnapshotHelper.h"
 #import <SafariServices/SafariServices.h>
 
 @interface ViewController ()<UIScrollViewDelegate>
@@ -16,7 +15,7 @@
 @property (nonatomic, strong) UIButton *forwardButton;
 @property (nonatomic, strong) UIButton *refreshButton;
 @property (nonatomic, strong) UIButton *goButton;
-@property (nonatomic, strong) UIButton *snapshotButton;
+@property (nonatomic, strong) UIButton *functionButton;
 @property (nonatomic, strong) UIButton *safariButton;
 @property (nonatomic, strong) UITextField *textField;
 @property (nonatomic, strong) UIWebView *webView;
@@ -71,13 +70,13 @@
     [self.goButton addTarget:self action:@selector(onClickedGoButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.goButton];
     
-    self.snapshotButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.snapshotButton.frame = CGRectMake(buttonSize.width * 4, buttonY, buttonSize.width, buttonSize.height);
-    self.snapshotButton.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-    self.snapshotButton.backgroundColor = [UIColor grayColor];
-    [self.snapshotButton setTitle:@"截图" forState:UIControlStateNormal];
-    [self.snapshotButton addTarget:self action:@selector(onClickedSnapshotButton:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.snapshotButton];
+    self.functionButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.functionButton.frame = CGRectMake(buttonSize.width * 4, buttonY, buttonSize.width, buttonSize.height);
+    self.functionButton.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    self.functionButton.backgroundColor = [UIColor grayColor];
+    [self.functionButton setTitle:@"Function" forState:UIControlStateNormal];
+    [self.functionButton addTarget:self action:@selector(onClickedFunctionButton:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.functionButton];
     
     self.safariButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.safariButton.frame = CGRectMake(buttonSize.width * 5, buttonY, buttonSize.width, buttonSize.height);
@@ -151,37 +150,8 @@
                      completion:NULL];
 }
 
-- (void)onClickedSnapshotButton:(id)sender {
-//    UIView *snapshotView = [self.webView snapshotViewAfterScreenUpdates:YES];
-    
-//    UIView *snapshotView = [MttViewSnapshotHelper snapshottedViewFromWebView:self.webView];
-    [MttViewSnapshotHelper snapshottedViewFromScrollView:self.webView.scrollView
-                                                  inRect:CGRectMake(0, 0, self.webView.scrollView.contentSize.width, self.webView.scrollView.contentSize.height)
-                                         completeHandler:^(UIView *snapshotView) {
-                                             
-                                             NSLog(@"%@", [snapshotView subviews]);
-                                             
-                                             snapshotView.tag = 10086;
-                                             snapshotView.frame = CGRectMake(0, 0, CGRectGetWidth(snapshotView.bounds), CGRectGetHeight(snapshotView.bounds));
-                                             snapshotView.hidden = NO;
-                                             snapshotView.alpha = 1.0;
-                                             
-                                             UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
-                                             scrollView.backgroundColor = [UIColor blackColor];
-                                             scrollView.tag = 1024;
-                                             scrollView.minimumZoomScale = 0.1;
-                                             scrollView.maximumZoomScale = 10.0;
-                                             scrollView.delegate = self;
-                                             [scrollView addSubview:snapshotView];
-                                             
-                                             UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-                                             closeButton.backgroundColor = [UIColor redColor];
-                                             closeButton.frame = CGRectMake(0, 20, 44, 44);
-                                             [closeButton addTarget:self action:@selector(closeSnapShotView:) forControlEvents:UIControlEventTouchUpInside];
-                                             [scrollView addSubview:closeButton];
-                                             
-                                             [self.view addSubview:scrollView];
-                                         }];
+- (void)onClickedFunctionButton:(id)sender {
+
 }
 
 - (void)closeSnapShotView:(id)sender

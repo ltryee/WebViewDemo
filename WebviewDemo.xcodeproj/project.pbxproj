@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		402BF5921C7ED93200FA54F3 /* MttViewSnapshotHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 402BF5911C7ED93200FA54F3 /* MttViewSnapshotHelper.m */; };
 		4084F42C1B55967300C09160 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4084F42B1B55967300C09160 /* main.m */; };
 		4084F42F1B55967300C09160 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4084F42E1B55967300C09160 /* AppDelegate.m */; };
 		4084F4321B55967300C09160 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4084F4311B55967300C09160 /* ViewController.m */; };
@@ -28,8 +27,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		402BF5901C7ED93200FA54F3 /* MttViewSnapshotHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MttViewSnapshotHelper.h; path = Snapshot/MttViewSnapshotHelper.h; sourceTree = "<group>"; };
-		402BF5911C7ED93200FA54F3 /* MttViewSnapshotHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MttViewSnapshotHelper.m; path = Snapshot/MttViewSnapshotHelper.m; sourceTree = "<group>"; };
 		4084F4261B55967300C09160 /* WebviewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebviewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4084F42A1B55967300C09160 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4084F42B1B55967300C09160 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -63,15 +60,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		402BF58F1C7ED8E000FA54F3 /* snapshot */ = {
-			isa = PBXGroup;
-			children = (
-				402BF5901C7ED93200FA54F3 /* MttViewSnapshotHelper.h */,
-				402BF5911C7ED93200FA54F3 /* MttViewSnapshotHelper.m */,
-			);
-			name = snapshot;
-			sourceTree = "<group>";
-		};
 		4084F41D1B55967300C09160 = {
 			isa = PBXGroup;
 			children = (
@@ -93,7 +81,6 @@
 		4084F4281B55967300C09160 /* WebviewDemo */ = {
 			isa = PBXGroup;
 			children = (
-				402BF58F1C7ED8E000FA54F3 /* snapshot */,
 				4084F42D1B55967300C09160 /* AppDelegate.h */,
 				4084F42E1B55967300C09160 /* AppDelegate.m */,
 				4084F4301B55967300C09160 /* ViewController.h */,
@@ -234,7 +221,6 @@
 			files = (
 				4084F4321B55967300C09160 /* ViewController.m in Sources */,
 				4084F42F1B55967300C09160 /* AppDelegate.m in Sources */,
-				402BF5921C7ED93200FA54F3 /* MttViewSnapshotHelper.m in Sources */,
 				4084F42C1B55967300C09160 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
