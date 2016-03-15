@@ -10,7 +10,7 @@
 
 @interface ViewController : UIViewController<UIWebViewDelegate, UITextFieldDelegate>
 
-
+- (void)openURLString:(NSString *)URLString;
 
 @end
 

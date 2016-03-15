@@ -11,6 +11,8 @@
 
 @interface AppDelegate ()
 
+@property (nonatomic, strong) ViewController *vc;
+
 @end
 
 @implementation AppDelegate
@@ -23,6 +25,7 @@
     
     ViewController *vc = [[ViewController alloc] init];
     self.window.rootViewController = vc;
+    self.vc = vc;
     
     return YES;
 }
@@ -47,6 +50,19 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    NSString *urlString = url.absoluteString;
+    NSString *identifier = @"WebViewDemo://";
+    if ([urlString hasPrefix:identifier]) {
+        urlString = [urlString substringFromIndex:identifier.length];
+        [self.vc openURLString:urlString];
+        return YES;
+    }
+    
+    return NO;
 }
 
 @end

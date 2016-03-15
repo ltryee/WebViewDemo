@@ -162,6 +162,13 @@
     }
 }
 
+#pragma mark - public methods
+- (void)openURLString:(NSString *)URLString
+{
+    NSURL *URL = [NSURL URLWithString:URLString];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:URL]];
+}
+
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     return YES;
