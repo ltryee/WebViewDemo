@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import <SafariServices/SafariServices.h>
 
 NSString * const defaultURLString = @"http://www.qq.com";
 
@@ -18,7 +17,6 @@ NSString * const defaultURLString = @"http://www.qq.com";
 @property (nonatomic, strong) UIButton *refreshButton;
 @property (nonatomic, strong) UIButton *goButton;
 @property (nonatomic, strong) UIButton *functionButton;
-@property (nonatomic, strong) UIButton *safariButton;
 @property (nonatomic, strong) UITextField *textField;
 @property (nonatomic, strong) UIWebView *webView;
 
@@ -29,7 +27,7 @@ NSString * const defaultURLString = @"http://www.qq.com";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSInteger buttonCount = 6;
+    NSInteger buttonCount = 5;
     CGRect webViewFrame = self.view.bounds;
     webViewFrame.size.height -= 44 * 2 + 20;
     webViewFrame.origin.y += 44 * 2 + 20;
@@ -79,14 +77,6 @@ NSString * const defaultURLString = @"http://www.qq.com";
     [self.functionButton setTitle:@"Function" forState:UIControlStateNormal];
     [self.functionButton addTarget:self action:@selector(onClickedFunctionButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.functionButton];
-    
-    self.safariButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.safariButton.frame = CGRectMake(buttonSize.width * 5, buttonY, buttonSize.width, buttonSize.height);
-    self.safariButton.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin;
-    self.safariButton.backgroundColor = [UIColor darkGrayColor];
-    [self.safariButton setTitle:@"Safari" forState:UIControlStateNormal];
-    [self.safariButton addTarget:self action:@selector(onClickedSafariButton:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.safariButton];
     
     self.textField = [[UITextField alloc] initWithFrame:CGRectMake(0, 20, CGRectGetWidth(self.view.bounds), 44)];
     self.textField.placeholder = @"http://";
@@ -141,15 +131,6 @@ NSString * const defaultURLString = @"http://www.qq.com";
     [self.webView loadRequest:request];
     
     [self.textField resignFirstResponder];
-}
-
-- (void)onClickedSafariButton:(id)sender
-{
-    SFSafariViewController *vc = [[SFSafariViewController alloc] initWithURL:self.webView.request.URL
-                                                     entersReaderIfAvailable:YES];
-    [self presentViewController:vc
-                       animated:YES
-                     completion:NULL];
 }
 
 - (void)onClickedFunctionButton:(id)sender {
