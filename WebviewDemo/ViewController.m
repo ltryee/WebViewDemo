@@ -9,6 +9,8 @@
 #import "ViewController.h"
 #import <SafariServices/SafariServices.h>
 
+NSString * const defaultURLString = @"http://www.qq.com";
+
 @interface ViewController ()<UIScrollViewDelegate>
 
 @property (nonatomic, strong) UIButton *backwardButton;
@@ -99,9 +101,9 @@
 {
     [super viewDidAppear:animated];
     
-    NSURL *URL = [NSURL URLWithString:@"http://www.qq.com"];
-    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-    [self.webView loadRequest:request];
+    if (defaultURLString.length > 0) {
+        [self openURLString:defaultURLString];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
