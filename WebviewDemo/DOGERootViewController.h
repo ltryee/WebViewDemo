@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  DOGERootViewController.h
 //  WebviewDemo
 //
 //  Created by 刘天扬 on 15/7/15.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController<UIWebViewDelegate, UITextFieldDelegate>
+@interface DOGERootViewController : UIViewController<UIWebViewDelegate, UITextFieldDelegate>
 
 - (void)openURLString:(NSString *)URLString;
 

@@ -1,16 +1,16 @@
 //
-//  ViewController.m
+//  DOGERootViewController.m
 //  WebviewDemo
 //
 //  Created by 刘天扬 on 15/7/15.
 //  Copyright (c) 2015年 com.text. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "DOGERootViewController.h"
 
 NSString * const defaultURLString = @"http://www.qq.com";
 
-@interface ViewController ()<UIScrollViewDelegate>
+@interface DOGERootViewController ()<UIScrollViewDelegate>
 
 @property (nonatomic, strong) UIButton *backwardButton;
 @property (nonatomic, strong) UIButton *forwardButton;
@@ -22,7 +22,7 @@ NSString * const defaultURLString = @"http://www.qq.com";
 
 @end
 
-@implementation ViewController
+@implementation DOGERootViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -134,7 +134,9 @@ NSString * const defaultURLString = @"http://www.qq.com";
 }
 
 - (void)onClickedFunctionButton:(id)sender {
-
+    // patch point
+    NSString *url = @"http://www.baidu.com";
+    [self openURLString:url];
 }
 
 - (void)closeSnapShotView:(id)sender

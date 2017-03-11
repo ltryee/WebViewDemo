@@ -7,11 +7,12 @@
 //
 
 #import "AppDelegate.h"
-#import "ViewController.h"
+#import "DOGERootViewController.h"
+#import <JSPatch/JPEngine.h>
 
 @interface AppDelegate ()
 
-@property (nonatomic, strong) ViewController *vc;
+@property (nonatomic, strong) DOGERootViewController *vc;
 
 @end
 
@@ -19,11 +20,14 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    [JPEngine startEngine];
+    
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    ViewController *vc = [[ViewController alloc] init];
+    DOGERootViewController *vc = [[DOGERootViewController alloc] init];
     self.window.rootViewController = vc;
     self.vc = vc;
     
@@ -42,6 +46,19 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    
+    NSURL *URL = [NSURL URLWithString:@"http://stdl.qq.com/stdl/ipadcover/development/demo_patch.js"];
+//    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+//    NSURLResponse * response = nil;
+    NSError * error = nil;
+//    NSData *data =[NSURLConnection sendSynchronousRequest:request
+//                                        returningResponse:&response
+//                                                    error:&error];
+    NSString *remoteScript = [NSString stringWithContentsOfURL:URL
+                                                    encoding:NSUTF8StringEncoding
+                                                       error:&error];
+    NSLog(@"remote script:\n%@", remoteScript);
+    [JPEngine evaluateScript:remoteScript];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
